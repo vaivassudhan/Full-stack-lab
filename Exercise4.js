@@ -19,6 +19,13 @@ mysqlC.connect((err)=>{
         console.log(err)
     }
 })
+// Create 
+app.post('/insert',(req,res) =>{
+    mysqlC.query('INSERT INTO student VALUES (3,"vaivas","CSE","9790596012")',(err)=>{
+        if(!err) res.end("inserted")
+        else res.end("Error")
+    })
+})
 // Read 
 app.get('/students' , (req, res) => {
     mysqlC.query('SELECT * FROM student', (err, rows, fields) => {
@@ -27,15 +34,15 @@ app.get('/students' , (req, res) => {
     {console.log(err);res.end("error");}
     })
 });
-// Create 
-app.get('/insert',(req,res) =>{
-    mysqlC.query('INSERT INTO student VALUES (3,"vaivas","CSE","9790596012")',(err)=>{
+// Update 
+app.put('/update',(req,res) =>{
+    mysqlC.query('UPDATE student SET Name="sudhan" WHERE id=3;',(err)=>{
         if(!err) res.end("inserted")
         else res.end("Error")
     })
 })
 // Delete
-app.get('/delete',(req,res) => {
+app.delete('/delete',(req,res) => {
     mysqlC.query('DELETE FROM student where student_id="3"' , (err) => {
         if(!err) res.end("deleted")
         else res.end("Error deleting")
