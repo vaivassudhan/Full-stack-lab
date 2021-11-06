@@ -29,7 +29,7 @@ app.get('/students' , (req, res) => {
 });
 // Create 
 app.get('/insert',(req,res) =>{
-    mysqlC.query('INSERT INTO student VALUES (3,"sudhan","CSE","9080185622")',(err)=>{
+    mysqlC.query('INSERT INTO student VALUES (3,"vaivas","CSE","9790596012")',(err)=>{
         if(!err) res.end("inserted")
         else res.end("Error")
     })
