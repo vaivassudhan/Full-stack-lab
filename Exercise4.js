@@ -1,3 +1,9 @@
+/*
+to test 
+curl -i -X POST -H 'Content-Type: application/json' -d '{"id":4,"Name": "curl-test","dept":"cse","phone": "9080185622"}' http://localhost:5000/insert
+curl -i -X DELETE http://localhost:5000/delete/3
+*/
+
 const http = require('http')
 const mysql = require('mysql')
 const express = require('express')
@@ -21,7 +27,9 @@ mysqlC.connect((err)=>{
 })
 // Create 
 app.post('/insert',(req,res) =>{
-    mysqlC.query('INSERT INTO student VALUES (3,"vaivas","CSE","9790596012")',(err)=>{
+    let query = `INSERT INTO student VALUES (${req.body.id},"${req.body.Name}","${req.body.dept}","${req.body.phone}")`
+
+    mysqlC.query(query,(err)=>{
         if(!err) res.end("inserted")
         else res.end("Error")
     })
@@ -42,7 +50,8 @@ app.put('/update',(req,res) =>{
     })
 })
 // Delete
-app.delete('/delete',(req,res) => {
+app.delete('/delete/:id',(req,res) => {
+    console.log(req.body.data)
     mysqlC.query('DELETE FROM student where student_id="3"' , (err) => {
         if(!err) res.end("deleted")
         else res.end("Error deleting")
