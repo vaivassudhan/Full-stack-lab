@@ -3,16 +3,15 @@
 Aim :
 1. to Build a Simple CRUD Node.js App with MySql Database connectivity 
 Procedure :
-1. Import mongoose, express and bodypareser packages using "require" method and store it in respective variables 
-2. create an object of class express by calling its contructor 
-3. Add bodyparser to the express app by using app.use() method to parse JSON 
-4. create a mongodb connection by using mongoose.connect() method of mongoose package 
-    with parameter object containing url of mongodb and object with newUrlParser set to true
-5. Then connect to the database using connect() function of mysqlConnecctor variable 
-6. Create: listen with post method and get the data from request object and use the mysql query to insert the data into the database
-7. Read : listen with get method to select all records from the given table and return to the user as response 
-8. Update : listen with put method to get data from user and update the exisiting record using the update query
-8. Delete : listen with delete method to delete a record in the database using delete command  
+Procedure 
+1. Install and import mongoose, express and bodypareser packages using "require" method 
+2. create an object of express with reference name app
+3. establish a database connection with mongodb server using mongoose.connect()
+4. add bodyparser to the app to parse JSON data 
+5. Build a model with mongoose.schema() and mongoose.model() function of mongoose library 
+6. configure router to handle the routes for the respective http methods 
+7. use model.save() to create, model.find() to query all data, findByIdAndUpdate() to update specific data and model.remove() to delete a record.  
+
 */
 const http = require('http')
 const mongoose = require('mongoose')

@@ -1,6 +1,6 @@
 /*
 to test 
-curl -i -X POST -H 'Content-Type: application/json' -d '{"id":4,"Name": "Piano Guy","dept":"cse","phone": "9080185622"}' http://localhost:5000/insert
+curl -i -X POST -H 'Content-Type: application/json' -d '{"id":4,"Name": "Pianoguy","dept":"cse","phone": "9080185622"}' http://localhost:5000/insert
 curl -i -X DELETE http://localhost:5000/delete/3
 Aim :
 1. to Build a Simple CRUD Node.js App with MySql Database connectivity 
@@ -63,8 +63,8 @@ app.put('/update',(req,res) =>{
     })
 })
 // Delete
-app.delete('/delete',(req,res) => {
-    console.log(req.body)
+app.get('/delete/:id',(req,res) => {
+    console.log(req.params.id)
     mysqlC.query('DELETE FROM student where student_id="3"' , (err) => {
         if(!err) res.end("deleted")
         else res.end("Error deleting")
